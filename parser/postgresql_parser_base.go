@@ -21,8 +21,9 @@ THE SOFTWARE.
 package parser
 
 import (
-	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"strings"
+
+	"github.com/antlr4-go/antlr/v4"
 )
 
 type PostgreSQLParserBase struct {

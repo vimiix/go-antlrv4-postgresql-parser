@@ -21,8 +21,9 @@ THE SOFTWARE.
 package parser
 
 import (
-	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"unicode"
+
+	"github.com/antlr4-go/antlr/v4"
 )
 
 type PostgreSQLLexerBase struct {
