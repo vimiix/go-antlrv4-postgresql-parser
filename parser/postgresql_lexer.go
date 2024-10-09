@@ -4272,8 +4272,7 @@ func (l *PostgreSQLLexer) Action(localctx antlr.RuleContext, ruleIndex, actionIn
 func (l *PostgreSQLLexer) Operator_Action(localctx antlr.RuleContext, actionIndex int) {
 	switch actionIndex {
 	case 0:
-
-		this.HandleLessLessGreaterGreater()
+		l.HandleLessLessGreaterGreater()
 
 	default:
 		panic("No registered action for: " + fmt.Sprint(actionIndex))
@@ -4282,7 +4281,7 @@ func (l *PostgreSQLLexer) Operator_Action(localctx antlr.RuleContext, actionInde
 func (l *PostgreSQLLexer) BeginDollarStringConstant_Action(localctx antlr.RuleContext, actionIndex int) {
 	switch actionIndex {
 	case 1:
-		this.pushTag()
+		l.pushTag()
 
 	default:
 		panic("No registered action for: " + fmt.Sprint(actionIndex))
@@ -4291,7 +4290,7 @@ func (l *PostgreSQLLexer) BeginDollarStringConstant_Action(localctx antlr.RuleCo
 func (l *PostgreSQLLexer) NumericFail_Action(localctx antlr.RuleContext, actionIndex int) {
 	switch actionIndex {
 	case 2:
-		this.HandleNumericFail()
+		l.HandleNumericFail()
 
 	default:
 		panic("No registered action for: " + fmt.Sprint(actionIndex))
@@ -4301,7 +4300,7 @@ func (l *PostgreSQLLexer) UnterminatedBlockComment_Action(localctx antlr.RuleCon
 	switch actionIndex {
 	case 3:
 
-		this.UnterminatedBlockCommentDebugAssert()
+		l.UnterminatedBlockCommentDebugAssert()
 
 	default:
 		panic("No registered action for: " + fmt.Sprint(actionIndex))
@@ -4326,7 +4325,7 @@ func (l *PostgreSQLLexer) AfterEscapeStringConstantWithNewlineMode_NotContinued_
 func (l *PostgreSQLLexer) EndDollarStringConstant_Action(localctx antlr.RuleContext, actionIndex int) {
 	switch actionIndex {
 	case 6:
-		this.popTag()
+		l.popTag()
 
 	default:
 		panic("No registered action for: " + fmt.Sprint(actionIndex))
@@ -4355,13 +4354,13 @@ func (l *PostgreSQLLexer) Sempred(localctx antlr.RuleContext, ruleIndex, predInd
 func (p *PostgreSQLLexer) Operator_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 0:
-		return this.checkLA('-')
+		return p.checkLA('-')
 
 	case 1:
-		return this.checkLA('*')
+		return p.checkLA('*')
 
 	case 2:
-		return this.checkLA('*')
+		return p.checkLA('*')
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))
@@ -4371,13 +4370,13 @@ func (p *PostgreSQLLexer) Operator_Sempred(localctx antlr.RuleContext, predIndex
 func (p *PostgreSQLLexer) OperatorEndingWithPlusMinus_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 3:
-		return this.checkLA('-')
+		return p.checkLA('-')
 
 	case 4:
-		return this.checkLA('*')
+		return p.checkLA('*')
 
 	case 5:
-		return this.checkLA('-')
+		return p.checkLA('-')
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))
@@ -4387,10 +4386,10 @@ func (p *PostgreSQLLexer) OperatorEndingWithPlusMinus_Sempred(localctx antlr.Rul
 func (p *PostgreSQLLexer) IdentifierStartChar_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 6:
-		return this.charIsLetter()
+		return p.charIsLetter()
 
 	case 7:
-		return this.CheckIfUtf32Letter()
+		return p.CheckIfUtf32Letter()
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))
@@ -4400,7 +4399,7 @@ func (p *PostgreSQLLexer) IdentifierStartChar_Sempred(localctx antlr.RuleContext
 func (p *PostgreSQLLexer) EndDollarStringConstant_Sempred(localctx antlr.RuleContext, predIndex int) bool {
 	switch predIndex {
 	case 8:
-		return this.isTag()
+		return p.isTag()
 
 	default:
 		panic("No predicate with index: " + fmt.Sprint(predIndex))

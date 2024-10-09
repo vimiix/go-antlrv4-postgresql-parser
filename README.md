@@ -18,7 +18,7 @@ package main
 import (
     "fmt"
     "github.com/vimiix/go-antlrv4-postgresql/parser"
-    "github.com/antlr4-go/antlr"
+    "github.com/antlr4-go/antlr/v4"
 )
 
 type TreeShapeListener struct {
