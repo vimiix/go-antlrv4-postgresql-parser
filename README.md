@@ -17,8 +17,9 @@ package main
 
 import (
     "fmt"
-    "github.com/vimiix/go-antlrv4-postgresql/parser"
+
     "github.com/antlr4-go/antlr/v4"
+    "github.com/vimiix/go-antlrv4-postgresql-parser/parser"
 )
 
 type TreeShapeListener struct {
@@ -34,10 +35,7 @@ func (s *TreeShapeListener) EnterEveryRule(ctx antlr.ParserRuleContext) {
 }
 
 func main() {
-
-    sql := `SELECT a,b,a<b AS "a<b",a<=b AS "a<=b",a=b AS "a=b",
-            a>=b AS "a>=b",a>b AS "a>b",a<>b AS "a<>b" FROM bit_table;`
-
+    sql := `SELECT a, b as c, 1 FROM bit_table;`
     input := antlr.NewInputStream(sql)
     lexer := parser.NewPostgreSQLLexer(input)
     stream := antlr.NewCommonTokenStream(lexer, 0)
@@ -45,7 +43,6 @@ func main() {
     p.AddErrorListener(antlr.NewDiagnosticErrorListener(true))
     p.BuildParseTrees = true
     antlr.ParseTreeWalkerDefault.Walk(NewTreeShapeListener(), p.Root())
-
 }
 ```
 
